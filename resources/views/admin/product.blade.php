@@ -37,7 +37,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Giá</strong>
-                    <input type="number" name="price" class="form-control" placeholder="Nhập giá sản phẩm"
+                    <input type="text" name="price" class="form-control" placeholder="Nhập giá sản phẩm"
                         value="{{$product->price}}">
                 </div>
                 @error('price')
@@ -48,7 +48,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Giá khuyến mại</strong>
-                    <input type="number" name="price_sale" class="form-control" placeholder="Nhập giá khuyến mại"
+                    <input type="text" name="price_sale" class="form-control" placeholder="Nhập giá khuyến mại"
                         value="{{$product->price}}">
                 </div>
                 @error('price_sale')

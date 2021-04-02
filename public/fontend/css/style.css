@@ -69,3 +69,19 @@ body .navbar{background-color: rgb(192,80,77);}
 
 .link{margin-left: 50px;margin-top: 20px;}
 .product-title{margin-top: 40px;margin-left: 50px;font-weight: bold;font-size: 20px;margin-bottom: 30px;}
+
+
+.account{position: relative;margin-top: 7px;}
+
+.menu-account{color:#fff;text-transform: capitalize;margin-top: 50px;}
+.menu-account:hover{text-decoration: none;color: #fff;}
+.menu-account__img{ border-radius: 25px;}
+.account:hover .nav-item_account{
+    display: block;
+}
+
+.nav-item_account{background-color:rgb(255, 255, 255);display: none;position: absolute; z-index: 1;top: 10;left:-10px ;width: 175px!important;padding: 5px;border: 1px solid black;border-radius: 5px;}
+.nav-item_account-list{margin:0;list-style: none;}
+.nav-item_account-list a{color: black;}
+
+.test {padding:100px;}

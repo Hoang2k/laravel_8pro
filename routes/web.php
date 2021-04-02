@@ -39,3 +39,15 @@ Route::get('/home',[AdminController::class,'home']);
 /////////////FRONTEND
 Route::get('/index',[pageController::class,'index'])->name('index');
 Route::get('/loai_sp/{id}',[pageController::class,'getProductType'])->name('product.type');
+Route::get('/detail/product/{id}',[pageController::class,'detailProduct'])->name('detail.product');
+Route::get('/search/product',[pageController::class,'searchProduct'])->name('customer.search.product');
+
+Route::get('/login-register',[pageController::class,'loginAndRegister']);
+Route::post('/register/customer',[pageController::class,'registerCustomer'])->name('register.customer');
+Route::post('/login/customer',[pageController::class,'loginCustomer'])->name('login.customer');
+Route::get('/logout/cutorm',[pageController::class,'logOut'])->name('logout.customer');
+Route::get('/user/account/address/{id}',[pageController::class,'getAddressCustomer'])->name('user.account.address');
+Route::post('/customer/order',[pageController::class,'saveOrder'])->name('customer.order');
+Route::get('/list/Customer',[AdminController::class,'getListCustomer'])->name('list.Customer');
+Route::get('/profile/customer',[pageController::class,'getProfileCustomer'])->name('profile.customer');
+

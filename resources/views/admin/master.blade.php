@@ -108,7 +108,7 @@
                         <span>Khách Hàng</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="">Danh Sách Khách Hàng</a></li>
+                        <li><a href="{{route('list.Customer')}}">Danh Sách Khách Hàng</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">

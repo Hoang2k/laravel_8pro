@@ -31,5 +31,13 @@ class AppServiceProvider extends ServiceProvider
             $category=category::all();
             $view->with('category',$category);
         });
+        view()->composer('frontend.login',function($view){
+            $category=category::all();
+            $view->with('category',$category);
+        });
+        view()->composer('frontend.master',function($view){
+            $category=category::all();
+            $view->with('category',$category);
+        });
     }
 }

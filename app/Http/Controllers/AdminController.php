@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\category;
 use Illuminate\Http\Request;
 use App\Models\product;
-
+use App\Models\Customer;
 
 class AdminController extends Controller
 {
@@ -41,7 +41,7 @@ class AdminController extends Controller
            [
             'name.required'=>'Tên sản phẩm không được để trống',
             'name.min'=>'Tên sản phẩm quá ngắn',
-           // 'name.alpha'=>'Tên sản phẩm phải là dạng chữ',
+            'name.alpha'=>'Tên sản phẩm phải là dạng chữ',
             'price.numeric '=>'Giá tiền phải là dạng số',
             'price.between '=>'Giá tiền phải lớn hơn 0',
             'price_sale.between '=>'Giá tiền phải lớn hơn 0',
@@ -118,6 +118,13 @@ class AdminController extends Controller
         ]);
          
         
+    }
+    public function getListCustomer(){
+        $customer=Customer::paginate(20);
+       
+        return view('admin.listProduct',[
+            'customer'=>$customer,
+        ]);
     }
     
 }

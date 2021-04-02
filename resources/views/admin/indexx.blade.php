@@ -73,7 +73,7 @@
                                     <td data-title="Danh Mục">{{$pro->category->name}}</td>
                                     <td data-title="Hình Ảnh">{{$pro->images}}</td>
                                     <td data-title="Tác Vụ">
-                                        <a class="btn btn-primary" href="{{route('getProduct',['id'=>$pro->id])}}"  >Sửa</a>
+                                        <a class="btn btn-light" href="{{route('getProduct',['id'=>$pro->id])}}"  >Sửa</a>
                                         <a class="btn btn-danger" href="{{route('delete.product',['id'=>$pro->id])}}">Xóa</a>
                                     </td>
                                 </tr>
@@ -133,6 +133,10 @@
                                         <input type="text" name="price_sale" value="" 
                                                id="price_sale" class="form-control"
                                                placeholder="Nhập giá khuyến mại">
+                                               @error('price_sale')
+                                              <span class="text-danger">{{$message}}</span>
+
+                                              @enderror
                                     </div>
                                     <div class="form-group">
                                         <label for="">Mô Tả</label>
@@ -145,7 +149,11 @@
                                         <input type="text" name="quantity" value="" 
                                                id="quantity" class="form-control"
                                                placeholder="Nhập số lượng">
-                                    </div>
+                                    </div>  @error('quantity')
+                                              <span class="text-danger">{{$message}}</span>
+
+                                              @enderror
+
                                     <div class="form-group">
                                         <label for="status">Danh Mục<span class="text-danger">(*)</span></label>
                                       <select class="form-control" value="" name="category_id" id="">

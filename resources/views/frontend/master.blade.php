@@ -1,35 +1,60 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <base href="{{asset('')}}">
+    <base href="{{ asset('/') }}" /> 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="fontend/css/bootstrap.css">
     <link rel="stylesheet" href="fontend/css/style.css" >
     <link rel="stylesheet" href="fontend/font-awesome-4.7.0/css/font-awesome.min.css">
-    <title>Document</title>
+  <!--Bootsrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="fontend/js/script.js"></script>
+    <title>Vật Liệu Xây Dựng</title>
 </head>
-<body>
+<body  onload="setup()">
     <div class="navbar navbar-expand-md">
         <div class="container-fluid ">
             <ul class="navbar-nav">
                 <li class="nav-item menu"><a class="nav-link" href="{{route('index')}}">TRANG CHỦ</a></li>
                 <li class="nav-item menu"><a class="nav-link" href="#">GIỚI THIỆU</a></li>
-                @foreach($category as $cate)
+
+
+               @foreach($category as $cate)
                 <li class="nav-item menu">
                     <a class="nav-link menu" href="{{route('product.type',['id'=>$cate->id])}}">{{$cate->name}}</a>
                     <!-- <ul class="sub-menu">
-                        <li><a  href="#">SẮT THÉP CÂY</a></li>
-                        <li><a  href="#">SẮT THÉP ỐNG</a></li>
+                        <li><a  href="product.html">SẮT THÉP CÂY</a></li>
+                        <li><a  href="product.html">SẮT THÉP ỐNG</a></li>
                     </ul> -->
                 </li>
                 @endforeach
-               
-                <li class="nav-item menu"><a class="nav-link" href="login.html">TÀI KHOẢN</a></li>
+              
+
+                @if(Auth::check())
+              
+              <li class="nav-item menu account">
+                 <a data-toggle="dropdown" class="menu-account" href="#">
+                     <img class="menu-account__img" alt="" src="source/images/avatar1_small.jpg">
+                     <span class="username">{{Auth::user()->user_name}}</span>
+                </a>
+                 
+                 <ul class="nav-item_account">
+                     <li class="nav-item_account-list"><a href="{{route('profile.customer')}}"><i class=" fa fa-suitcase"></i>Thông Tin Cá Nhân</a></li>
+                     <li class="nav-item_account-list"><a href="{{route('logout.customer')}}"><i class="fa fa-key"></i>Đăng Xuất</a></li>
+                 </ul>
+                 
+                
+             </li>
+            
+                     @else
+                     <li class="nav-item menu"><a class="nav-link" href="{{url('/login-register')}}">TÀI KHOẢN</a></li>
+                     @endif 
                 <li class="nav-item ">
-                    <form>
-                        <input class="input-search" type="text" placeholder="Tìm Kiếm">
+                    <form action="{{route('customer.search.product')}}">
+                        <input class="input-search" name="search" type="text" placeholder="Tìm Kiếm">
                         <input class="btn" type="button"><i class="fa fa-search fa-lg" aria-hidden="true"></i>
                     </form>
                 </li>
@@ -39,26 +64,8 @@
             </ul>
         </div>
     </div>
-    
-    <div class="index-content"><!--phần nội dung-->
-        <div class="sp-ban-chay">
-           <div class="link"><a>Trang chủ</a> / <p style="text-transform: capitalize;display: inline;"></p>{{$category[0]->name}}</p> </div>
-           <p class="product-title"></p>
-            <div class="row">
-                
-            @foreach($product as $pro)
-                <div class="col-lg-3" >
-                    <a href="a"><img src="fontend/img/{{$pro->images}}"></a>
-                    <a href="#"><p class="index-tensp">{{$pro->name}}</p></a>
-                    <p class="gia-sp">{{$pro->price_sale}}</p>
-                    <p class="gia-cu">{{$pro->price}}</p>
-                </div>
-              @endforeach 
-            
-            </div>
-        </div>
-        
-    </div><!--end phần nội dung-->
+   
+   @yield('content')
     <div class="footer">
         <div class="container-fluid footer-top">
             <p id="fist">Gọi ngay để tư vấn</p>
@@ -76,7 +83,7 @@
                 <p>Hàng chính hãng</p>
             </div>
             <div class="col-lg-3">
-                <img src="img/icon3.jpg">
+                <img src="fontend/img/icon3.jpg">
                 <p class="p-fist">Đổi trả miễn phí</p>
                 <p>Trong vòng 15 ngày</p>
             </div>
